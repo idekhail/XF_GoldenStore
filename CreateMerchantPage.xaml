@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.CreateMerchantPage"
+             BackgroundColor="Wheat">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0">
+                    <Label Text="Create Merchant" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"  FontAttributes="Bold" />
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Username" x:Name="Username"  TextColor="Black"/>
+                <Entry Placeholder="Password" x:Name="Password" TextColor="Black"/>
+                <Entry Placeholder="Email" x:Name="Email" TextColor="Black"/>
+                <Entry Placeholder="Mobile" x:Name="Mobile"  TextColor="Black"/>
+                <Entry Placeholder="Zone" x:Name="Zone"  TextColor="Black"/>
+                <Entry Placeholder="City" x:Name="City"  TextColor="Black"/>
+                <Entry Placeholder="ShopName" x:Name="ShopName"  TextColor="Black"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Button Text="Next" x:Name="Create" Clicked="Create_Clicked"  Background="gold" TextColor="Black" WidthRequest="150" Margin="5" />
+                <Button Text="Cancel" x:Name="Cancel" Background="gold" TextColor="Black" WidthRequest="150" Margin="5" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

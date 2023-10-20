@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.GoldenStore"
+            xmlns:local="clr-namespace:XF_GoldenStore" 
+            NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="Black"
+            SelectedTabColor="Red"
+            UnselectedTabColor="White"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom" 
+            BackgroundColor="Wheat">
+
+    <local:LoadMerchantPage Title="LoadPage" IconImageSource="load" />
+    <local:HelpPage Title="Help" IconImageSource="help" />
+    <local:LoginMerchantPage Title="Login" IconImageSource="login" />
+
+</TabbedPage>

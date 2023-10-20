@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.AddNewProductPage">
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Add Product" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        <StackLayout Spacing="10" >
+            <Entry Placeholder="Product Name" x:Name="ProductName" 
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+            <StackLayout>
+            <Grid Padding="5,0" RowSpacing="5" ColumnSpacing="5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="img1" Source="tapped1" HeightRequest="200" WidthRequest="200"  
+                       Grid.Row="0" Grid.Column="0" BackgroundColor="#808080" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="BtnTakePhoto_Clicked"
+                            NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="img2" Source="tapped2" HeightRequest="200" WidthRequest="200"  
+                       Grid.Row="0" Grid.Column="1" BackgroundColor="#808080" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="BtnTakePhoto_Clicked"
+                            NumberOfTapsRequired="2" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="img3" Source="tapped3" HeightRequest="200" WidthRequest="200"  
+                       Grid.Row="1" Grid.Column="0" BackgroundColor="#808080" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="BtnTakePhoto_Clicked"
+                            NumberOfTapsRequired="2" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="img4" Source="tapped4" HeightRequest="200" WidthRequest="200"  
+                       Grid.Row="1" Grid.Column="1" BackgroundColor="#808080" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="BtnTakePhoto_Clicked"
+                            NumberOfTapsRequired="2" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button 
+                Text="Save Product" 
+                IsVisible="False" 
+                x:Name="BtnSaveProduct" 
+                Clicked="BtnSaveProduct_Clicked" 
+                Margin="10" />
+        </StackLayout>
+        <Button 
+            Text="Cancel" 
+            x:Name="Cancel" 
+            Margin="10"  />
+    </StackLayout>
+</ContentPage>
+    

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.ShowMerchantPage"
+             BackgroundColor="AntiqueWhite">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Show Merchant Page"   HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Shop Name" x:Name="ShopName"  HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout  HorizontalOptions="Center" >
+                <ListView x:Name="listView" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid Padding="10,10,10,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout  BackgroundColor="Green" >
+                                            <Image  Source="asset/tapped1.jpg"  HorizontalOptions="CenterAndExpand"  >
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Tapped="BtnGallary_Clicked"
+                                                        NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Add new Product" x:Name="AddNewProduct"  Clicked="AddNewProduct_Clicked" />
+                <Button Text="Logout" x:Name="Logout"  />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

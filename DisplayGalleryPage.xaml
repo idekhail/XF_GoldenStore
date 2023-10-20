@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.DisplayGalleryPage"
+              Title="Display Product">
+    <CarouselPage.Children>
+        <ContentPage Title="img1">
+            <Image x:Name="img1" />
+        </ContentPage>
+        <ContentPage Title="img2">
+            <Image x:Name="img2" />
+        </ContentPage>
+        <ContentPage Title="img3">
+            <Image x:Name="img3" />
+        </ContentPage>
+        <ContentPage Title="img4">
+            <Image x:Name="img4" />
+        </ContentPage>
+    </CarouselPage.Children>
+</CarouselPage>

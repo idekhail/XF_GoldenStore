@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.LoginMerchantPage"
+             BackgroundColor="Wheat">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0">
+                    <Label Text="Golden Store" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" FontAttributes="Bold"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <Entry Placeholder="Username" x:Name="Username"  BackgroundColor="White" TextColor="Black" PlaceholderColor="Black" WidthRequest="150" Margin="5" />
+                <Entry Placeholder="Password" x:Name="Password" BackgroundColor="White" TextColor="Black"  PlaceholderColor="Black" WidthRequest="150" Margin="5" />
+            </StackLayout>
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <Button Text="Login" x:Name="Login"  Clicked="Login_Clicked" BackgroundColor="AliceBlue" TextColor="Black" FontAttributes="Bold" WidthRequest="150" Margin="5" />
+                <Button Text="Create" x:Name="Create" BackgroundColor="LightCoral" TextColor="Black" WidthRequest="150"  FontAttributes="Bold"  Margin="5" />
+                <Button Text="Home" x:Name="Home" BackgroundColor="Lavender" TextColor="Black" WidthRequest="150"  FontAttributes="Bold"  Margin="5" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

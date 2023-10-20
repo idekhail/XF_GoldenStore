@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.LoadMerchantPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listView" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="10,10,10,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="350"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="#313FA0" Grid.Row="0" Grid.Column="0" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center">
+                                        <Label Text="{Binding Id}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Label Text="{Binding ShopName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Label Text="{Binding Mobile}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Image Source="{Binding Url1}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
