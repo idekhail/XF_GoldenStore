@@ -26,7 +26,7 @@ namespace XF_GoldenStore
         {
             InitializeComponent();
 
-            MainPage =new NavigationPage(new GoldenStore());
+            MainPage =new NavigationPage(new MainGoldenStorePage());
            
         }
 

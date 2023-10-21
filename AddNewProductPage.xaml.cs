@@ -19,10 +19,26 @@ namespace XF_GoldenStore
             InitializeComponent();
             this.user = user;
            
-            Cancel.Clicked += (s, e) => Navigation.PushAsync(new ShowMerchantPage(user));
+            Cancel.Clicked += (s, e) => Navigation.PushAsync(new DisplayAllProductForUser(user));
         }
 
-        private async void BtnTakePhoto_Clicked(object sender, EventArgs e)
+        private void BtnTakePhoto1_Clicked(object sender, EventArgs e)
+        {
+            TakePhoto(img1, product.Url1);            
+        }
+        private void BtnTakePhoto2_Clicked(object sender, EventArgs e)
+        {
+            TakePhoto(img2, product.Url2);
+        }
+        private void BtnTakePhoto3_Clicked(object sender, EventArgs e)
+        {
+            TakePhoto(img3, product.Url3);
+        }
+        private void BtnTakePhoto4_Clicked(object sender, EventArgs e)
+        {
+            TakePhoto(img4, product.Url4);
+        }
+        private async void TakePhoto(Image img, string url)
         {
             try
             {
@@ -32,17 +48,17 @@ namespace XF_GoldenStore
                     var photo = await current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                     {
                         CompressionQuality = 75
-                    });                    
-                    
-                    img1.Source = ImageSource.FromStream(() =>
+                    });
+
+                    img.Source = ImageSource.FromStream(() =>
                     {
                         var stream = photo.GetStream();
                         CurrentImageBase64 = GetBase64(photo.GetStream());
-                        product.Url1 = CurrentImageBase64;
+                        url = CurrentImageBase64;
                         BtnSaveProduct.IsVisible = true;
                         photo.Dispose();
                         return stream;
-                    });                   
+                    });
                 }
             }
             catch (Exception ex)
@@ -50,7 +66,6 @@ namespace XF_GoldenStore
                 await DisplayAlert("Error Take Photo", ex.Message, "Ok");
             }
         }
-
         private string GetBase64(Stream stream)
         {
             byte[] array;
@@ -70,7 +85,7 @@ namespace XF_GoldenStore
                 product.Mobile = user.Mobile;
                 await App.DBSQLite.SaveProductAsync(product);
                 
-                await Navigation.PushAsync(new ShowMerchantPage(user));
+                await Navigation.PushAsync(new DisplayAllProductForUser(user));
                
             }
             catch (Exception ex)

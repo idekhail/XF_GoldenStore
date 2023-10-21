@@ -2,17 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:XF_GoldenStore.Model"
-             x:Class="XF_GoldenStore.LoadMerchantPage">
-
-    <!-- declare the Base64ToImageSource -->
+             x:Class="XF_GoldenStore.DisplayAllProductForUser"
+             BackgroundColor="AntiqueWhite">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ConverterBase64ImageSource x:Key="Base64ToImageSource" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout >
-        <Label Text="LoadMerchantPage" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" />
-        <StackLayout >
+    <StackLayout>
+        <Label Text="DisplayAllProductForUser" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" />
+        <Label x:Name="ShopName" HorizontalOptions="Center" VerticalOptions="Center" FontSize="36" />
+        <StackLayout>
             <ListView x:Name="listView" 
                           HasUnevenRows="True" 
                           IsPullToRefreshEnabled="true" 
@@ -28,8 +28,8 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition  Width="100"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout Orientation="Horizontal" BackgroundColor="#313FA0"  HeightRequest="100" WidthRequest="100" HorizontalOptions="CenterAndExpand">
-                                        <Label Text="{Binding ShopName}" FontSize="25" WidthRequest="100" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"  TextColor="White" />
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="#313FA0" Grid.Row="0" Grid.Column="0" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center">
+                                        <Label Text="{Binding ShopName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                         <Image Source="{Binding Url1, Converter={StaticResource Base64ToImageSource}}"></Image>
                                     </StackLayout>
                                 </Grid>
@@ -38,6 +38,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </StackLayout >
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button x:Name="AddNewProduct" Clicked="AddNewProduct_Clicked" Text="AddNewProduct" />
+            <Button x:Name="Logout" Text="Logout" />
         </StackLayout>
+        
     </StackLayout>
 </ContentPage>

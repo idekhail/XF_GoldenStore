@@ -29,7 +29,7 @@ namespace XF_GoldenStore
             //img3.Source = product.Url[2];
             //img4.Source = product.Url[3];
 
-            Back.Clicked += (s, e) =>  Navigation.PushAsync(new ShowMerchantPage(user));
+            Back.Clicked += (s, e) =>  Navigation.PushAsync(new DisplayAllProductForUser(user));
 
         }
 
@@ -51,7 +51,7 @@ namespace XF_GoldenStore
                 await App.DBSQLite.SaveProductAsync(product);
 
                 await DisplayAlert("Done", "Users @ Products are added", "Ok");
-                await Navigation.PushAsync(new ShowMerchantPage(user));
+                await Navigation.PushAsync(new DisplayAllProductForUser(user));
             }
             else
                 await DisplayAlert("Error", "Username is empty Or Username is already existe", "Ok");

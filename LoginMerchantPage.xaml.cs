@@ -16,7 +16,7 @@ namespace XF_GoldenStore
         {
             InitializeComponent();
             Create.Clicked += (s, e) => Navigation.PushAsync(new CreateMerchantPage());
-            Home.Clicked += (s, e) => Navigation.PushAsync(new GoldenStore());
+            Home.Clicked += (s, e) => Navigation.PushAsync(new MainGoldenStorePage());
         }
 
         private async void Login_Clicked(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace XF_GoldenStore
                 if (user != null)
                 {
 
-                    await Navigation.PushAsync(new ShowMerchantPage(user));
+                    await Navigation.PushAsync(new DisplayAllProductForUser(user));
 
                 }
                 else

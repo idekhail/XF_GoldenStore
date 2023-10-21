@@ -20,35 +20,35 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image x:Name="img1" Source="tapped1" HeightRequest="200" WidthRequest="200"  
+                <Image x:Name="img1" Source="tapped1" HeightRequest="100" WidthRequest="100"  
                        Grid.Row="0" Grid.Column="0" BackgroundColor="#808080" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
-                            Tapped="BtnTakePhoto_Clicked"
+                            Tapped="BtnTakePhoto1_Clicked"
                             NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image x:Name="img2" Source="tapped2" HeightRequest="200" WidthRequest="200"  
+                <Image x:Name="img2" Source="tapped2" HeightRequest="100" WidthRequest="100"  
                        Grid.Row="0" Grid.Column="1" BackgroundColor="#808080" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
-                            Tapped="BtnTakePhoto_Clicked"
+                            Tapped="BtnTakePhoto2_Clicked"
                             NumberOfTapsRequired="2" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image x:Name="img3" Source="tapped3" HeightRequest="200" WidthRequest="200"  
+                <Image x:Name="img3" Source="tapped3" HeightRequest="100" WidthRequest="100"  
                        Grid.Row="1" Grid.Column="0" BackgroundColor="#808080" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
-                            Tapped="BtnTakePhoto_Clicked"
+                            Tapped="BtnTakePhoto3_Clicked"
                             NumberOfTapsRequired="2" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image x:Name="img4" Source="tapped4" HeightRequest="200" WidthRequest="200"  
+                <Image x:Name="img4" Source="tapped4" HeightRequest="100" WidthRequest="100"  
                        Grid.Row="1" Grid.Column="1" BackgroundColor="#808080" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
-                            Tapped="BtnTakePhoto_Clicked"
+                            Tapped="BtnTakePhoto4_Clicked"
                             NumberOfTapsRequired="2" />
                     </Image.GestureRecognizers>
                 </Image>

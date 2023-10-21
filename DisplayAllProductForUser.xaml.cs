@@ -7,55 +7,51 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using XF_GoldenStore.Model;
 
 namespace XF_GoldenStore
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoadMerchantPage : ContentPage
+    public partial class DisplayAllProductForUser : ContentPage
     {
-        private Users user = new Users();
-        private Products product;
+        private Users user;
 
-        public LoadMerchantPage()
+        public DisplayAllProductForUser(Users user)
         {
-
             InitializeComponent();
-            
-            LoadUsers();
-            LoadSelectedItem();            
-        }
+            this.user = user;
+            ShopName.Text = user.ShopName;
 
+            Logout.Clicked += (s, e) => Navigation.PopToRootAsync();
+
+            LoadImage();
+            LoadSelectedItem();
+        }
 
         public void LoadSelectedItem()
         {
             listView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
             {
-                this.user = (Users)e.SelectedItem;
+                var product = (Products)e.SelectedItem;
 
                 // now you can reference item.Name, item.Location, etc
-                Navigation.PushAsync(new DisplayAllProductForUser(user));
-
-               // DisplayAlert("ItemSelected", user.Mobile, "Ok");
+                Navigation.PushAsync(new DisplayOneProductInGalleryPage(product));
             };
         }
 
-
-
-        public async void LoadUsers()
+        public async void LoadImage()
         {
             try
             {
-                var myList = await App.DBSQLite.GetAllUsersAsync();
-                if (myList != null)
-                    listView.ItemsSource = myList;
+                var productList = await App.DBSQLite.GetAllProductForUserAsync(user.Mobile);                
+                if (productList != null)
+                    listView.ItemsSource = productList;
+                 
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error Take Photo", ex.Message, "Ok");
+               await  DisplayAlert("Error Take Photo", ex.Message, "Ok");
             }
-            
         }
        
         private Stream GetStream(string base64)
@@ -68,8 +64,8 @@ namespace XF_GoldenStore
         {
             try
             {
-                product = await App.DBSQLite.GetProductAsync(user.Mobile);
-                await Navigation.PushAsync(new UpdateMerchantPage(this.user, this.product));
+                var product = await App.DBSQLite.GetProductAsync(user.Mobile);
+                await Navigation.PushAsync(new UpdateMerchantPage(user, product));
             }
             catch (Exception ex)
             {
@@ -77,16 +73,10 @@ namespace XF_GoldenStore
             }
 
         }
-
-        private async void BtnGallary_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new DisplayOneProductInGalleryPage(product));
-        }
-
-
+         
         private async void AddNewProduct_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddNewProductPage(user));
+           await Navigation.PushAsync(new AddNewProductPage(user));
 
         }
     }
