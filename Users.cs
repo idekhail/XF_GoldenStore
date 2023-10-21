@@ -17,5 +17,7 @@ namespace XF_GoldenStore.Model
         public string City { get; set; }
         public string Email { get; set; }
         public string ShopName { get; set; }
+        public string Url1 { get; set; }
+
     }
 }
