@@ -10,7 +10,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
-        <Label Text="DisplayAllProductForUser" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" />
+        <Label Text="كل معروضات التاجر" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" />
         <Label x:Name="ShopName" HorizontalOptions="Center" VerticalOptions="Center" FontSize="36" />
         <StackLayout>
             <ListView x:Name="listView" 
@@ -23,14 +23,15 @@
                             <ViewCell.View>
                                 <Grid Padding="10,10,10,10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="100"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition  Width="100"></ColumnDefinition>
+                                        <ColumnDefinition  Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout Orientation="Horizontal" BackgroundColor="#313FA0" Grid.Row="0" Grid.Column="0" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center">
-                                        <Label Text="{Binding ShopName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                        <Image Source="{Binding Url1, Converter={StaticResource Base64ToImageSource}}"></Image>
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="#313FA0"  HorizontalOptions="CenterAndExpand">
+                                        <Label Text="{Binding ProductName}" FontSize="25"  HeightRequest="100" WidthRequest="100" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"  TextColor="White" />
+                                        <Image Source="{Binding Url1, Converter={StaticResource Base64ToImageSource}}"  HeightRequest="100" WidthRequest="100"></Image>
+                                        
                                     </StackLayout>
                                 </Grid>
                             </ViewCell.View>
@@ -38,9 +39,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout >
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <Button x:Name="AddNewProduct" Clicked="AddNewProduct_Clicked" Text="AddNewProduct" />
+        </StackLayout>
+        <Image x:Name="img1"  HeightRequest="100" WidthRequest="100"></Image>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="Black">
+            <Button x:Name="AddNewProduct"  Text="AddProduct" />
+            <Button x:Name="UpdateUser"  Text="Update User" />
             <Button x:Name="Logout" Text="Logout" />
         </StackLayout>
         

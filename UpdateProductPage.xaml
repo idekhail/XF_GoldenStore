@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF_GoldenStore.UpdateProductPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0">
+                    <Label Text="Update Merchant" HorizontalTextAlignment="Center" TextColor="Gold" FontSize="36" StyleId=""/>
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Product Name" x:Name="ProductName" HorizontalOptions="CenterAndExpand" />
+                <Entry Placeholder="Mobile" x:Name="Mobile" Margin="10" TextColor="AliceBlue"/>
+                <StackLayout>
+                    <Grid Padding="5,0" RowSpacing="5" ColumnSpacing="5" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="2*" />
+
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="img1" Grid.Row="0" Grid.Column="0" BackgroundColor="#808080" />
+                        <Image x:Name="img2" Grid.Row="0" Grid.Column="1" BackgroundColor="#808080" />
+                        <Image x:Name="img3" Grid.Row="1" Grid.Column="0" BackgroundColor="#808080" />
+                        <Image x:Name="img4" Grid.Row="1" Grid.Column="1" BackgroundColor="#808080" />
+                    </Grid>
+
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Button Text="Update" x:Name="Update" Clicked="Update_Clicked"  Background="gold" TextColor="Black" WidthRequest="150" Margin="5" />
+                <Button Text="Back" x:Name="Back" Background="gold" TextColor="Black" WidthRequest="150" Margin="5" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

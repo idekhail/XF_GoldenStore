@@ -4,15 +4,15 @@
              x:Class="XF_GoldenStore.MainGoldenStorePage"
              xmlns:local1="clr-namespace:XF_GoldenStore"
              NavigationPage.HasNavigationBar="False"
-             BarBackgroundColor="Black"
+             BarBackgroundColor="LightSeaGreen"            
              SelectedTabColor="Red"
              UnselectedTabColor="White"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
              android:TabbedPage.ToolbarPlacement="Bottom" 
              BackgroundColor="Wheat">
 
-    <local1:LoadMerchantPage Title="LoadPage" IconImageSource="load" />
-    <local1:HelpPage Title="Help" IconImageSource="help" />
-    <local1:LoginMerchantPage Title="Login" IconImageSource="login" />
+    <local1:LoadMerchantPage Title="الصفحة الرئيسية" IconImageSource="load" />
+    <local1:HelpPage Title="المساعدة" IconImageSource="help" />
+    <local1:LoginMerchantPage Title="التاجر" IconImageSource="login" />
 
 </TabbedPage>

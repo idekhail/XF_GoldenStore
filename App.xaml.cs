@@ -17,7 +17,7 @@ namespace XF_GoldenStore
             {
                 if (db == null)
                 {
-                    db = new DBOperations(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "GoldenDB.db3"));
+                    db = new DBOperations(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "GoldenDB2.db3"));
                 }
                 return db;
             }

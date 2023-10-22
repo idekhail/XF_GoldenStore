@@ -33,7 +33,7 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="BtnTakePhoto2_Clicked"
-                            NumberOfTapsRequired="2" />
+                            NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image x:Name="img3" Source="tapped3" HeightRequest="100" WidthRequest="100"  
@@ -41,7 +41,7 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="BtnTakePhoto3_Clicked"
-                            NumberOfTapsRequired="2" />
+                            NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image x:Name="img4" Source="tapped4" HeightRequest="100" WidthRequest="100"  
@@ -49,15 +49,16 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="BtnTakePhoto4_Clicked"
-                            NumberOfTapsRequired="2" />
+                            NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
         </StackLayout>
+        <Image x:Name="img5"  HeightRequest="100" WidthRequest="100"  />
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Button 
                 Text="Save Product" 
-                IsVisible="False" 
+                IsVisible="True" 
                 x:Name="BtnSaveProduct" 
                 Clicked="BtnSaveProduct_Clicked" 
                 Margin="10" />

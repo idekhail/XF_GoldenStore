@@ -2,7 +2,7 @@
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XF_GoldenStore.DisplayOneProductInGalleryPage"
-              Title="عرض منتج واحد">
+              Title="استعراض منتج">
     
     <CarouselPage.Children>
         <ContentPage Title="img1">

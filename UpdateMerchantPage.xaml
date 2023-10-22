@@ -10,34 +10,17 @@
                 </Frame>
             </StackLayout>
             <StackLayout>
-                <Entry Placeholder="username" x:Name="Username" Margin="10" TextColor="AliceBlue"/>
-                <Entry Placeholder="Password" x:Name="Password" Margin="10" TextColor="AliceBlue"/>
-                <Entry Placeholder="Email" x:Name="Email" Margin="10" TextColor="AliceBlue"/>
-                <Entry Placeholder="Mobile" x:Name="Mobile" Margin="10" TextColor="AliceBlue"/>
-                <Entry Placeholder="Zone" x:Name="Zone" Margin="10" TextColor="AliceBlue"/>
-                <Entry Placeholder="City" x:Name="City" Margin="10" TextColor="AliceBlue"/>
-                <Entry Placeholder="Shop Name" x:Name="ShopName" Margin="10" TextColor="AliceBlue"/>
+                <Entry Placeholder="username" x:Name="Username" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Password" x:Name="Password" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Email" x:Name="Email" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Mobile" x:Name="Mobile" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Zone" x:Name="Zone" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="City" x:Name="City" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Shop Name" x:Name="ShopName" Margin="5" TextColor="Black"/>
 
-                <Entry Placeholder="Product Name" x:Name="ProductName" HorizontalOptions="CenterAndExpand" />
-                
-                <StackLayout>
-                    <Grid Padding="5,0" RowSpacing="5" ColumnSpacing="5" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*" />
-                            <RowDefinition Height="2*" />
-
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image x:Name="img1" Grid.Row="0" Grid.Column="0" BackgroundColor="#808080" />
-                        <Image x:Name="img2" Grid.Row="0" Grid.Column="1" BackgroundColor="#808080" />
-                        <Image x:Name="img3" Grid.Row="1" Grid.Column="0" BackgroundColor="#808080" />
-                        <Image x:Name="img4" Grid.Row="1" Grid.Column="1" BackgroundColor="#808080" />
-                    </Grid>
-
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Take Photo" x:Name="TakePhoto" Clicked="BtnTakePhoto_Clicked"/>
+                    <Image x:Name="img1" HeightRequest="50" WidthRequest="50" BackgroundColor="White" />
                 </StackLayout>
 
             </StackLayout>

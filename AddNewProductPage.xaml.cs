@@ -24,21 +24,21 @@ namespace XF_GoldenStore
 
         private void BtnTakePhoto1_Clicked(object sender, EventArgs e)
         {
-            TakePhoto(img1, product.Url1);            
+            TakePhoto(img1, 1);            
         }
         private void BtnTakePhoto2_Clicked(object sender, EventArgs e)
         {
-            TakePhoto(img2, product.Url2);
+            TakePhoto(img2, 2);
         }
         private void BtnTakePhoto3_Clicked(object sender, EventArgs e)
         {
-            TakePhoto(img3, product.Url3);
+            TakePhoto(img3, 3);
         }
         private void BtnTakePhoto4_Clicked(object sender, EventArgs e)
         {
-            TakePhoto(img4, product.Url4);
+            TakePhoto(img4, 4);
         }
-        private async void TakePhoto(Image img, string url)
+        private async void TakePhoto(Image img, int count)
         {
             try
             {
@@ -47,15 +47,29 @@ namespace XF_GoldenStore
                 {
                     var photo = await current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                     {
-                        CompressionQuality = 75
+                        CompressionQuality = 70
                     });
 
                     img.Source = ImageSource.FromStream(() =>
                     {
                         var stream = photo.GetStream();
                         CurrentImageBase64 = GetBase64(photo.GetStream());
-                        url = CurrentImageBase64;
-                        BtnSaveProduct.IsVisible = true;
+                        switch (count)
+                        {
+                            case 1: product.Url1 = CurrentImageBase64;
+                                break;
+                            case 2:
+                                product.Url2 = CurrentImageBase64;
+                                break;
+                            case 3:
+                                product.Url3 = CurrentImageBase64;
+                                break;
+                            case 4:
+                                product.Url4 = CurrentImageBase64;
+                                break;
+                            
+                        }
+                       // BtnSaveProduct.IsVisible = true;
                         photo.Dispose();
                         return stream;
                     });
@@ -66,17 +80,7 @@ namespace XF_GoldenStore
                 await DisplayAlert("Error Take Photo", ex.Message, "Ok");
             }
         }
-        private string GetBase64(Stream stream)
-        {
-            byte[] array;
-            using(MemoryStream memory = new MemoryStream())
-            {
-                stream.CopyTo(memory);
-                array = memory.ToArray();
-            }
-
-            return Convert.ToBase64String(array);
-        }
+        
         private async void BtnSaveProduct_Clicked(object sender, EventArgs e)
         {
             try
@@ -84,7 +88,9 @@ namespace XF_GoldenStore
                 product.ProductName = ProductName.Text;
                 product.Mobile = user.Mobile;
                 await App.DBSQLite.SaveProductAsync(product);
-                
+               
+                    img5.Source = product.Url1;
+               
                 await Navigation.PushAsync(new DisplayAllProductForUser(user));
                
             }
@@ -93,6 +99,19 @@ namespace XF_GoldenStore
                 await DisplayAlert("Error Save Product", ex.Message, "Ok");
             }
         }
+
+        private string GetBase64(Stream stream)
+        {
+            byte[] array;
+            using (MemoryStream memory = new MemoryStream())
+            {
+                stream.CopyTo(memory);
+                array = memory.ToArray();
+            }
+
+            return Convert.ToBase64String(array);
+        }
+
         private Stream GetStream(string base64)
         {
             byte[] array = Convert.FromBase64String(base64);

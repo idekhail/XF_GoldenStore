@@ -16,13 +16,29 @@ namespace XF_GoldenStore
     {
         private Users user;
 
+        public DisplayAllProductForUser(int id)
+        {
+            InitializeComponent();
+
+            AddNewProduct.IsVisible = false;
+            UpdateUser.IsVisible = false;
+            Logout.IsVisible = false;
+
+            LoadImage(id);
+            LoadSelectedItem();                       
+        }
         public DisplayAllProductForUser(Users user)
         {
             InitializeComponent();
             this.user = user;
+            AddNewProduct.IsVisible = true;
+            UpdateUser.IsVisible = true;
+            Logout.IsVisible = true;
             ShopName.Text = user.ShopName;
 
-            Logout.Clicked += (s, e) => Navigation.PopToRootAsync();
+            Logout.Clicked     += (s, e) => Navigation.PopToRootAsync();
+            UpdateUser.Clicked += (s, e) => Navigation.PushAsync(new UpdateMerchantPage(user));
+            AddNewProduct.Clicked += (s, e) => Navigation.PushAsync(new AddNewProductPage(user));
 
             LoadImage();
             LoadSelectedItem();
@@ -42,10 +58,14 @@ namespace XF_GoldenStore
         public async void LoadImage()
         {
             try
-            {
+            {                
                 var productList = await App.DBSQLite.GetAllProductForUserAsync(user.Mobile);                
                 if (productList != null)
                     listView.ItemsSource = productList;
+                foreach(var p in productList)
+                {
+                    img1.Source = p.Url1;
+                }
                  
             }
             catch (Exception ex)
@@ -53,31 +73,32 @@ namespace XF_GoldenStore
                await  DisplayAlert("Error Take Photo", ex.Message, "Ok");
             }
         }
-       
+        public async void LoadImage(int id)
+        {
+            try
+            {
+                this.user = await App.DBSQLite.GetUserAsync(id);
+                ShopName.Text = user.ShopName;
+                var productList = await App.DBSQLite.GetAllProductForUserAsync(user.Mobile);
+                if (productList != null)
+                    listView.ItemsSource = productList;
+                foreach (var p in productList)
+                {
+                    img1.Source = p.Url1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error Take Photo", ex.Message, "Ok");
+            }
+        }
         private Stream GetStream(string base64)
         {
             byte[] array = Convert.FromBase64String(base64);
             return new MemoryStream(array);
-        }
-
-        private async void Update_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                var product = await App.DBSQLite.GetProductAsync(user.Mobile);
-                await Navigation.PushAsync(new UpdateMerchantPage(user, product));
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-
-        }
+        }       
          
-        private async void AddNewProduct_Clicked(object sender, EventArgs e)
-        {
-           await Navigation.PushAsync(new AddNewProductPage(user));
-
-        }
+       
     }
 }

@@ -35,7 +35,7 @@ namespace XF_GoldenStore
                 this.user = (Users)e.SelectedItem;
 
                 // now you can reference item.Name, item.Location, etc
-                Navigation.PushAsync(new DisplayAllProductForUser(user));
+                Navigation.PushAsync(new DisplayAllProductForUser(user.Id));
 
                // DisplayAlert("ItemSelected", user.Mobile, "Ok");
             };
@@ -50,6 +50,7 @@ namespace XF_GoldenStore
                 var myList = await App.DBSQLite.GetAllUsersAsync();
                 if (myList != null)
                     listView.ItemsSource = myList;
+                
             }
             catch (Exception ex)
             {
@@ -68,8 +69,7 @@ namespace XF_GoldenStore
         {
             try
             {
-                product = await App.DBSQLite.GetProductAsync(user.Mobile);
-                await Navigation.PushAsync(new UpdateMerchantPage(this.user, this.product));
+                await Navigation.PushAsync(new UpdateMerchantPage(this.user));
             }
             catch (Exception ex)
             {

@@ -24,7 +24,11 @@ namespace XF_GoldenStore.Model
         {
             return db.Table<Users>().Where(i => i.Username == username && i.Password == password).FirstOrDefaultAsync();
         }
-
+        // Get a specific user by Username.
+        public Task<Users> GetUserAsync(int id)
+        {
+            return db.Table<Users>().Where(i => i.Id == id).FirstOrDefaultAsync();
+        }
         public Task<int> SaveUserAsync(Users user)
         {
             if (user.Id != 0)
