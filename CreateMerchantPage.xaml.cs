@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plugin.Media;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,31 +48,69 @@ namespace XF_GoldenStore
         }
         private async void BtnTakePhoto_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                var current = Plugin.Media.CrossMedia.Current;
-                if (current.IsCameraAvailable && current.IsTakePhotoSupported)
-                {
-                    var photo = await current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                    {
-                        CompressionQuality = 75
-                    });
 
-                    img1.Source = ImageSource.FromStream(() =>
+            var current = CrossMedia.Current;
+
+            var choice = await DisplayAlert("Choose", "Indecate The Source:", "Camera", "File");
+            if (choice)
+            {
+                try
+                {
+                    if (current.IsCameraAvailable && current.IsTakePhotoSupported)
                     {
-                        var stream = photo.GetStream();
-                        CurrentImageBase64 = GetBase64(photo.GetStream());
-                        user.Url1 = CurrentImageBase64;
-                        photo.Dispose();
-                        return stream;
-                    });
+                        var photo = await current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                        {
+                            CompressionQuality = 70
+                        });
+
+                        img1.Source = ImageSource.FromStream(() =>
+                        {
+                            var stream = photo.GetStream();
+                            CurrentImageBase64 = GetBase64(photo.GetStream());
+                            user.Url1 = CurrentImageBase64;
+                            photo.Dispose();
+                            return stream;
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error Take Photo", ex.Message, "Ok");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                await DisplayAlert("Error Take Photo", ex.Message, "Ok");
+                try
+                {
+                    if (current.IsPickPhotoSupported)
+                    {
+                        var photo = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new
+                                        Plugin.Media.Abstractions.PickMediaOptions
+                        {
+                            PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small
+                        });
+                        if (photo == null)
+                            return;
+                        img1.Source = ImageSource.FromStream(() =>
+                        {
+                            var stream = photo.GetStream();
+                            CurrentImageBase64 = GetBase64(photo.GetStream());
+                            user.Url1 = CurrentImageBase64;
+                            photo.Dispose();
+                            return stream;
+                        });
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error Take Photo", ex.Message, "Ok");
+                }
             }
-        }
+
+  
+
+            }
 
         private string GetBase64(Stream stream)
         {
